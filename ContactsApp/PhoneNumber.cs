@@ -8,15 +8,24 @@ namespace ContactsApp
 {
     public class PhoneNumber
     {
-        private  int _countryCode;
-        private int _cityCode;
-        private int _subscriberCode;
+        private const string RussianCountryCode = "7";
 
-        public int CountryCode 
+        private const int CityCodeLength = 3;
+
+        private const int SubscriberCodeLength = 7; 
+
+        private  string _countryCode;
+
+        private string _cityCode;
+
+        private string _subscriberCode;
+
+        public string CountryCode 
         {
             set 
-            { 
-                if (value != 7)
+            {
+              
+                if (string.Compare(RussianCountryCode, value) == 0)
                 {
                     throw new ArgumentException("Не российский код страны");
                 }
@@ -29,11 +38,11 @@ namespace ContactsApp
             }
         }
 
-        public int CityCode
+        public string CityCode
         {
             set
             {
-                if (value < 100)
+                if (value.Length != CityCodeLength)
                 {
                     throw new ArgumentException("Недостаточная длина кода города");
                 }
@@ -45,11 +54,12 @@ namespace ContactsApp
                 return this._cityCode;
             }
         }
-        public int SubscriberCode
+
+        public string SubscriberCode
         {
             set
             {
-                if (value < 10000000)
+                if (value.Length != SubscriberCodeLength)
                 {
                     throw new ArgumentException("Недостаточная длина номера абонента");
                 }
@@ -62,12 +72,15 @@ namespace ContactsApp
             }
         }
 
-        PhoneNumber(int countryCode, int cityCode, int subscriberCode)
+        public PhoneNumber(string countryCode, string cityCode, string subscriberCode)
         {
             this.CountryCode = countryCode;
             this.CityCode = cityCode;
             this.SubscriberCode = subscriberCode;
         }
+        public PhoneNumber()
+        {
 
+        }
     }
 }
