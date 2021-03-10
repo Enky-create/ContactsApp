@@ -25,7 +25,7 @@ namespace ContactsApp
             set 
             {
               
-                if (string.Compare(RussianCountryCode, value) == 0)
+                if (string.Compare(RussianCountryCode, value) != 0)
                 {
                     throw new ArgumentException("Не российский код страны");
                 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContactsApp
 {
-    public class Contact
+    public class Contact: ICloneable
     {
         private const int NameSurnameEmailLength = 50;
 
@@ -22,12 +22,34 @@ namespace ContactsApp
 
         private string _idVkontakte = "";
 
-        private DateTime _birthDate;
+        private DateTime _birthDate = new DateTime(1900, 1, 1);
 
+        public object Clone()
+        {
+            return new Contact( 
+                new PhoneNumber(
+                this.PhoneNumber.CountryCode, 
+                this.PhoneNumber.CityCode, 
+                this.PhoneNumber.SubscriberCode),
+                this.Name, 
+                this.Surname,
+                new DateTime(this.BirthDate.Year, this.BirthDate.Month, this.BirthDate.Day),
+                this.Email, 
+                this.IdVkontakte
+                );
+            
+        }
         public DateTime BirthDate
         {
             set
             {
+                var minDate = new DateTime(1900,1,1);
+               
+
+                if ((value > DateTime.Now)||(value < minDate))
+                {
+                    throw new ArgumentException("Некорректная дата");
+                }
                 this._birthDate = value;
             }
             get
@@ -39,7 +61,7 @@ namespace ContactsApp
         {
             set
             {
-                if (value.Length <= IdVkontakteLength)
+                if (value.Length > IdVkontakteLength)
                 {
                     throw new ArgumentException("IdVkontakte больше 15 символов");
                 }
@@ -54,7 +76,7 @@ namespace ContactsApp
         {
             set
             {
-                if(value.Length <= NameSurnameEmailLength)
+                if(value.Length > NameSurnameEmailLength)
                 {
                     throw new ArgumentException("Имя больше 50 символов");
                 }
@@ -71,7 +93,7 @@ namespace ContactsApp
         {
             set
             {
-                if (value.Length <= NameSurnameEmailLength)
+                if (value.Length > NameSurnameEmailLength)
                 {
                     throw new ArgumentException("Фамилия больше 50 символов");
                 }
@@ -88,7 +110,7 @@ namespace ContactsApp
         {
             set
             {
-                if (value.Length <= NameSurnameEmailLength)
+                if (value.Length > NameSurnameEmailLength)
                 {
                     throw new ArgumentException("Email больше 50 символов");
                 }
@@ -113,17 +135,17 @@ namespace ContactsApp
                 return this._phoneNumber;
             }
         }
-        Contact(string phoneNumber, string name, string surname)
+        public Contact(PhoneNumber phoneNumber, string name, string surname)
         {
-            if (phoneNumber.Length != 11)
+            /*if (phoneNumber.Length != 11)
             {
                 throw new ArgumentException("Номер меньше или больше  11 символов");
-            }
-            var countryCode = phoneNumber.Substring(0,1);
+            }*/
+           /* var countryCode = phoneNumber.Substring(0,1);
 
             var cityCode = phoneNumber.Substring(1, 3);
             
-            var subscriberCode = phoneNumber.Substring(4,7);
+            var subscriberCode = phoneNumber.Substring(4,7);*/
 
             var corrrectName = name.Substring(0, 1).ToUpper() + name.Substring(1);
 
@@ -133,7 +155,36 @@ namespace ContactsApp
 
             this.Surname = correctSurname;
 
-            this.PhoneNumber = new PhoneNumber(countryCode, cityCode, subscriberCode);
+            this.PhoneNumber = phoneNumber;
+        }
+
+        public Contact(PhoneNumber phoneNumber, string name, string surname, DateTime birthDate, string email, string idVkontakte)
+        {
+            /*if (phoneNumber.Length != 11)
+            {
+                throw new ArgumentException("Номер меньше или больше  11 символов");
+            }
+            var countryCode = phoneNumber.Substring(0, 1);
+
+            var cityCode = phoneNumber.Substring(1, 3);
+
+            var subscriberCode = phoneNumber.Substring(4, 7);*/
+
+            var corrrectName = name.Substring(0, 1).ToUpper() + name.Substring(1);
+
+            var correctSurname = surname.Substring(0, 1).ToUpper() + surname.Substring(1);
+
+            this.Email = email;
+
+            this.BirthDate = birthDate;
+
+            this.IdVkontakte = idVkontakte;
+
+            this.Name = corrrectName;
+
+            this.Surname = correctSurname;
+
+            this.PhoneNumber = phoneNumber;
         }
 
     }
