@@ -7,14 +7,21 @@ using System.IO;
 using Newtonsoft.Json;
 namespace ContactsApp
 {
+    /// <summary>
+    /// Статический класс для сохранения и выгрузки из файла
+    /// </summary>
     public static class ProjectManager
     {
+        /// <summary>
+        /// Поле хранит путь до файла
+        /// </summary>
         public static string PathToFile = @"G:\json.txt";
 
-
-
-        /* public static void SaveToFile(<type> data, string filename);
-         public static <type> LoadFromFile(string filename);*/
+        /// <summary>
+        /// статический метод сохраняет список контактов в файл
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="filename"></param>
         public static void SaveToFile(Project data, string filename)
         {
             JsonSerializer serializer = new JsonSerializer();
@@ -26,6 +33,11 @@ namespace ContactsApp
             }
         }
 
+        /// <summary>
+        /// статический метод загружает список контактов из файла
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
         public static Project LoadFromFile(string filename)
         {
 
