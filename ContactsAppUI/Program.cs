@@ -16,18 +16,25 @@ namespace ContactsAppUI
         {
             PhoneNumber phone = new PhoneNumber("7", "952", "8975112");
             DateTime birthDate = new DateTime(1998, 10, 23);
-            Contact contact1 = new Contact(phone, "Вадим", "Комков", birthDate, "email", "12222");
+            Contact contact1 = new Contact(phone, "вадим", "Комков", birthDate, "email", "12222");
             Contact contact2 = (Contact)contact1.Clone();
 
             Contact contact3 = new Contact(phone, "Вадим", "Комков");
             Contact contact4 = (Contact)contact3.Clone();
             contact3.PhoneNumber.CityCode="956";
 
-            Project project = new Project();
+            var project = new Project();
             project.contacts.Add(contact1);
             project.contacts.Add(contact2);
             project.contacts.Add(contact3);
             project.contacts.Add(contact4);
+
+            ProjectManager.SaveToFile(project, ProjectManager.PathToFile);
+
+            var project2 = ProjectManager.LoadFromFile(ProjectManager.PathToFile);
+
+            Console.WriteLine(project2.contacts[0].Name);
+            Console.Read();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

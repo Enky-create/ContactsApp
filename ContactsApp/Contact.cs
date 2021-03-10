@@ -187,5 +187,10 @@ namespace ContactsApp
             this.PhoneNumber = phoneNumber;
         }
 
+        public Contact()
+        {
+
+        }
+
     }
 }
