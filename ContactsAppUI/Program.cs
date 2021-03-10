@@ -23,6 +23,12 @@ namespace ContactsAppUI
             Contact contact4 = (Contact)contact3.Clone();
             contact3.PhoneNumber.CityCode="956";
 
+            Project project = new Project();
+            project.contacts.Add(contact1);
+            project.contacts.Add(contact2);
+            project.contacts.Add(contact3);
+            project.contacts.Add(contact4);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
