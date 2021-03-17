@@ -29,9 +29,9 @@ namespace ContactsAppUI
             project.contacts.Add(contact3);
             project.contacts.Add(contact4);
 
-            ProjectManager.SaveToFile(project, ProjectManager.PathToFile);
+            ProjectManager.Save(project, ProjectManager.Path);
 
-            var project2 = ProjectManager.LoadFromFile(ProjectManager.PathToFile);
+            var project2 = ProjectManager.Load(ProjectManager.Path);
 
             Console.WriteLine(project2.contacts[0].Name);
             Console.Read();
