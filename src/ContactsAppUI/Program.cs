@@ -24,16 +24,16 @@ namespace ContactsAppUI
             contact3.PhoneNumber.CityCode="956";
 
             var project = new Project();
-            project.contacts.Add(contact1);
-            project.contacts.Add(contact2);
-            project.contacts.Add(contact3);
-            project.contacts.Add(contact4);
+            project.Сontacts.Add(contact1);
+            project.Сontacts.Add(contact2);
+            project.Сontacts.Add(contact3);
+            project.Сontacts.Add(contact4);
 
             ProjectManager.Save(project, ProjectManager.Path);
 
             var project2 = ProjectManager.Load(ProjectManager.Path);
 
-            Console.WriteLine(project2.contacts[0].Name);
+            Console.WriteLine(project2.Сontacts[0].Name);
             Console.Read();
 
             Application.EnableVisualStyles();

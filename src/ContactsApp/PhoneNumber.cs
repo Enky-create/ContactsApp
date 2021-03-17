@@ -42,16 +42,32 @@ namespace ContactsApp
         private string _subscriberCode;
 
         /// <summary>
+        /// Метод проверяет наличие букв в номере
+        /// </summary>
+        /// <param name="forCheck"></param>
+        private void IsStringDigit(string forCheck)
+        {
+            for (int i = 0; i < forCheck.Length; i++)
+            {
+                if (!Char.IsDigit(forCheck[i]))
+                {
+                    throw new ArgumentException("В номере есть символы кроме цифр");
+                }
+            }
+        }
+
+        /// <summary>
         /// Свойство с проверкой на российский номер
         /// </summary>
         public string CountryCode 
         {
             set 
             {
-              
+                IsStringDigit(value);
+
                 if (string.Compare(RussianCountryCode, value) != 0)
                 {
-                    throw new ArgumentException("Не российский код страны");
+                    throw new ArgumentException("Код страны должен быть 7");
                 }
                 _countryCode = value;
             }
@@ -69,9 +85,11 @@ namespace ContactsApp
         {
             set
             {
+                IsStringDigit(value);
+
                 if (value.Length != CityCodeLength)
                 {
-                    throw new ArgumentException("Недостаточная длина кода города");
+                    throw new ArgumentException("Недостаточная длина кода города она должна равняться " + CityCodeLength);
                 }
                 _cityCode = value;
             }
@@ -89,9 +107,11 @@ namespace ContactsApp
         {
             set
             {
+                IsStringDigit(value);
+
                 if (value.Length != SubscriberCodeLength)
                 {
-                    throw new ArgumentException("Недостаточная длина номера абонента");
+                    throw new ArgumentException("Недостаточная длина номера абонента, длина должна быть " + SubscriberCodeLength);
                 }
                 _subscriberCode = value;
             }

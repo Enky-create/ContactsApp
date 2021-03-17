@@ -36,7 +36,7 @@ namespace ContactsApp
         /// <summary>
         /// Объект с номером телефона
         /// </summary>
-        private PhoneNumber _phoneNumber;
+        private PhoneNumber _phoneNumber = new PhoneNumber();
 
         /// <summary>
         /// Строка хранит idVkontakte
@@ -81,7 +81,7 @@ namespace ContactsApp
 
                 if ((value > DateTime.Now)||(value < minDate))
                 {
-                    throw new ArgumentException("Некорректная дата");
+                    throw new ArgumentException("Дата не может быть больше текущей и меньше 1.01.1900");
                 }
                 this._birthDate = value;
             }
@@ -121,7 +121,7 @@ namespace ContactsApp
                 {
                     throw new ArgumentException("Имя больше 50 символов");
                 }
-                this._name = value;
+                this._name = value.Substring(0, 1).ToUpper() + value.Substring(1); 
             } 
             
             get
@@ -141,7 +141,7 @@ namespace ContactsApp
                 {
                     throw new ArgumentException("Фамилия больше 50 символов");
                 }
-                this._surname = value;
+                this._surname = value.Substring(0, 1).ToUpper() + value.Substring(1); 
             }
 
             get
@@ -175,15 +175,7 @@ namespace ContactsApp
         /// </summary>
         public PhoneNumber PhoneNumber
         {
-            set
-            {
-                this._phoneNumber = value;
-            }
-
-            get
-            {
-                return this._phoneNumber;
-            }
+            get; set;
         }
 
         /// <summary>
@@ -194,23 +186,9 @@ namespace ContactsApp
         /// <param name="surname"></param>
         public Contact(PhoneNumber phoneNumber, string name, string surname)
         {
-            /*if (phoneNumber.Length != 11)
-            {
-                throw new ArgumentException("Номер меньше или больше  11 символов");
-            }*/
-           /* var countryCode = phoneNumber.Substring(0,1);
+            this.Name = name;
 
-            var cityCode = phoneNumber.Substring(1, 3);
-            
-            var subscriberCode = phoneNumber.Substring(4,7);*/
-
-            var corrrectName = name.Substring(0, 1).ToUpper() + name.Substring(1);
-
-            var correctSurname = surname.Substring(0, 1).ToUpper() + surname.Substring(1);
-
-            this.Name = corrrectName;
-
-            this.Surname = correctSurname;
+            this.Surname = surname;
 
             this.PhoneNumber = phoneNumber;
         }
@@ -226,19 +204,15 @@ namespace ContactsApp
         /// <param name="idVkontakte"></param>
         public Contact(PhoneNumber phoneNumber, string name, string surname, DateTime birthDate, string email, string idVkontakte)
         {
-            var corrrectName = name.Substring(0, 1).ToUpper() + name.Substring(1);
-
-            var correctSurname = surname.Substring(0, 1).ToUpper() + surname.Substring(1);
-
             this.Email = email;
 
             this.BirthDate = birthDate;
 
             this.IdVkontakte = idVkontakte;
 
-            this.Name = corrrectName;
+            this.Name = name;
 
-            this.Surname = correctSurname;
+            this.Surname = surname;
 
             this.PhoneNumber = phoneNumber;
         }
