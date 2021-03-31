@@ -34,11 +34,12 @@ namespace ContactsAppUI
             var project2 = ProjectManager.Load(ProjectManager.Path);
 
             Console.WriteLine(project2.Сontacts[0].Name);
+            Console.WriteLine(ProjectManager.Path);
             Console.Read();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
 
             
            

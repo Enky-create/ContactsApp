@@ -15,7 +15,9 @@ namespace ContactsApp
         /// <summary>
         /// Поле хранит путь до файла
         /// </summary>
-        public static string Path { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\AppData\Roaming\Komkov\ContactsApp\";
+        public static string Path { get; set; } = 
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
+            @"\Komkov\ContactsApp\";
 
         public static string FileName { get; set; } = @"Contacts.txt";
         /// <summary>
