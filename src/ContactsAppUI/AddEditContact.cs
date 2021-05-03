@@ -160,5 +160,10 @@ namespace ContactsAppUI
                 VkTextBoxLabel.Text = evt.Message;
             }
         }
+
+        private void AddEditCancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -266,6 +266,7 @@ namespace ContactsAppUI
             this.AddEditCancelButton.TabIndex = 1;
             this.AddEditCancelButton.Text = "Cancel";
             this.AddEditCancelButton.UseVisualStyleBackColor = true;
+            this.AddEditCancelButton.Click += new System.EventHandler(this.AddEditCancelButton_Click);
             // 
             // AddEditOkButton
             // 
