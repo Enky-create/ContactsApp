@@ -178,6 +178,7 @@ namespace ContactsAppUI
             // 
             // RemoveContactButton
             // 
+            this.RemoveContactButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.RemoveContactButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RemoveContactButton.ForeColor = System.Drawing.Color.Red;
             this.RemoveContactButton.Location = new System.Drawing.Point(103, 415);
@@ -191,6 +192,7 @@ namespace ContactsAppUI
             // 
             // EditContactButton
             // 
+            this.EditContactButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.EditContactButton.Image = ((System.Drawing.Image)(resources.GetObject("EditContactButton.Image")));
             this.EditContactButton.Location = new System.Drawing.Point(56, 415);
             this.EditContactButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -202,6 +204,7 @@ namespace ContactsAppUI
             // 
             // AddContactButton
             // 
+            this.AddContactButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.AddContactButton.BackColor = System.Drawing.SystemColors.Menu;
             this.AddContactButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddContactButton.ForeColor = System.Drawing.Color.Lime;
@@ -216,6 +219,7 @@ namespace ContactsAppUI
             // 
             // ContactListBox
             // 
+            this.ContactListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.ContactListBox.FormattingEnabled = true;
             this.ContactListBox.Location = new System.Drawing.Point(5, 30);
             this.ContactListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -226,6 +230,7 @@ namespace ContactsAppUI
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 8);
             this.label1.Name = "label1";
@@ -235,6 +240,7 @@ namespace ContactsAppUI
             // 
             // FindTextBox
             // 
+            this.FindTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.FindTextBox.Location = new System.Drawing.Point(38, 6);
             this.FindTextBox.Name = "FindTextBox";
             this.FindTextBox.Size = new System.Drawing.Size(219, 20);
@@ -364,7 +370,6 @@ namespace ContactsAppUI
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MaximumSize = new System.Drawing.Size(867, 1999);
             this.MinimumSize = new System.Drawing.Size(867, 523);
             this.Name = "MainForm";
             this.Text = "ContactsApp";
