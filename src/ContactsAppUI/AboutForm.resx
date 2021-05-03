@@ -117,18 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="EditContactButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAERSURBVEhL7dU/agJBHMXxEbsIKbVJ7wHsRA+gF/AqIY0BLQQLsfAuCoLeIIFAmiSQC1in8s/3
-        zfJjYdmNO+5aCD74sM5i3sw4a3S3kCHeMUZDN8rMK47QBHvs0EMpsXJdlScsoYkKT2LlGz+KU8UW2kld
-        Ny6JlRvbgaWJA0Z+FJhkedYkH3iLXuZPVrmxSex9erpy51y50eeva3JH/yZvubnKys29PFVQeRdpJVm0
-        mKDM8IUBvpFWaoLLK/jF1I+ce8QapZQrLeiP234UpQZ97QuXK/rB+MODH8Xpo3C58gmVrKCVdzCBzkT3
-        g56WZPQv1lYp2omuOhMdvJ6uQnmBlf9gDu1AB19KFniGdnJLce4EwL+mnaoEV+4AAAAASUVORK5CYII=
-</value>
-  </data>
 </root>

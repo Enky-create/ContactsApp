@@ -14,7 +14,7 @@ namespace ContactsAppUI
         [STAThread]
         static void Main()
         {
-            PhoneNumber phone = new PhoneNumber("7", "952", "8975112");
+            /*PhoneNumber phone = new PhoneNumber("7", "952", "8975112");
             DateTime birthDate = new DateTime(1998, 10, 23);
             Contact contact1 = new Contact(phone, "вадим", "Комков", birthDate, "email", "12222");
             Contact contact2 = (Contact)contact1.Clone();
@@ -35,7 +35,7 @@ namespace ContactsAppUI
 
             Console.WriteLine(project2.Сontacts[0].Name);
             Console.WriteLine(ProjectManager.Path);
-            Console.Read();
+            Console.Read();*/
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

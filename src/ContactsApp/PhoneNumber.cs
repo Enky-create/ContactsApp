@@ -24,12 +24,12 @@ namespace ContactsApp
         /// <summary>
         /// Константа хранит длину номера абонента
         /// </summary>
-        private const int SubscriberCodeLength = 7; 
+        private const int SubscriberCodeLength = 7;
 
         /// <summary>
         /// Строка хранящая код страны
         /// </summary>
-        private  string _countryCode;
+        private string _countryCode;
 
         /// <summary>
         /// Строка хранящая код города

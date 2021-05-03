@@ -121,6 +121,12 @@ namespace ContactsApp
                 {
                     throw new ArgumentException("Имя больше 50 символов");
                 }
+                if (value == "")
+                {
+                    throw new ArgumentException("Длина имени равна "
+                        + value.Length
+                        + "имя должно быть больше 0");
+                }
                 this._name = value.Substring(0, 1).ToUpper() + value.Substring(1); 
             } 
             
@@ -140,6 +146,12 @@ namespace ContactsApp
                 if (value.Length > NameSurnameEmailLength)
                 {
                     throw new ArgumentException("Фамилия больше 50 символов");
+                }
+                if (value.Length == 0)
+                {
+                    throw new ArgumentException("Длина фамилии равна " 
+                        + value.Length 
+                        + "фамилия должна быть больше 0");
                 }
                 this._surname = value.Substring(0, 1).ToUpper() + value.Substring(1); 
             }
@@ -176,7 +188,7 @@ namespace ContactsApp
         public PhoneNumber PhoneNumber
         {
             get; set;
-        }
+        } = new PhoneNumber();
 
         /// <summary>
         /// Конструктор с необходимыми данными контакта
