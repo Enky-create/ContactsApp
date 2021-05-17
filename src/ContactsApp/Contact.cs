@@ -81,7 +81,7 @@ namespace ContactsApp
 
                 if ((value > DateTime.Now)||(value < minDate))
                 {
-                    throw new ArgumentException("Дата не может быть больше текущей и меньше 1.01.1900");
+                    throw new ArgumentException("The date cannot be greater than the current one and less than 1.01.1900");
                 }
                 this._birthDate = value;
             }
@@ -100,7 +100,7 @@ namespace ContactsApp
             {
                 if (value.Length > IdVkontakteLength)
                 {
-                    throw new ArgumentException("IdVkontakte больше 15 символов");
+                    throw new ArgumentException("IdVkontakte is greater than 15 characters");
                 }
                 this._idVkontakte = value;
             }
@@ -119,13 +119,13 @@ namespace ContactsApp
             {
                 if(value.Length > NameSurnameEmailLength)
                 {
-                    throw new ArgumentException("Имя больше 50 символов");
+                    throw new ArgumentException("Name is more than 50 characters");
                 }
                 if (value == "")
                 {
                     throw new ArgumentException("Длина имени равна "
                         + value.Length
-                        + "имя должно быть больше 0");
+                        + " name must be greater than ");
                 }
                 this._name = value.Substring(0, 1).ToUpper() + value.Substring(1); 
             } 
@@ -145,13 +145,13 @@ namespace ContactsApp
             {
                 if (value.Length > NameSurnameEmailLength)
                 {
-                    throw new ArgumentException("Фамилия больше 50 символов");
+                    throw new ArgumentException("Last name is more than 50 characters");
                 }
                 if (value.Length == 0)
                 {
-                    throw new ArgumentException("Длина фамилии равна " 
+                    throw new ArgumentException("The length of the surname is "
                         + value.Length 
-                        + "фамилия должна быть больше 0");
+                        + "surname must be greater than 0");
                 }
                 this._surname = value.Substring(0, 1).ToUpper() + value.Substring(1); 
             }
@@ -171,7 +171,7 @@ namespace ContactsApp
             {
                 if (value.Length > NameSurnameEmailLength)
                 {
-                    throw new ArgumentException("Email больше 50 символов");
+                    throw new ArgumentException("Email more than 50 characters");
                 }
                 this._email = value;
             }
@@ -190,6 +190,17 @@ namespace ContactsApp
             get; set;
         } = new PhoneNumber();
 
+        public string GetNumber ()
+        {
+            var number = this.PhoneNumber.CountryCode 
+                + this.PhoneNumber.CityCode 
+                + this.PhoneNumber.SubscriberCode; 
+            if(number.Length == 11)
+            {
+                return number;
+            }
+            return "";
+        }
         /// <summary>
         /// Конструктор с необходимыми данными контакта
         /// </summary>

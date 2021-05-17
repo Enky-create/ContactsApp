@@ -18,10 +18,7 @@ namespace ContactsAppUI
 
         public AddEditContact()
         {
-            
             InitializeComponent();
-           
-
         }
 
         private void AddEditContact_Load(object sender, EventArgs e)
@@ -35,30 +32,24 @@ namespace ContactsAppUI
             VkTextBox.Text = Contact.IdVkontakte;
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
+        
 
         private void AddEditOkButton_Click(object sender, EventArgs e)
         {
-            var isFilled = panel1.Controls.OfType<TextBox>().Any(textBox => textBox.Text == "");
-            if (isFilled)
+            var textboxList = inputPanel.Controls.OfType<TextBox>();
+            var isFilled = textboxList.Any(textBox => textBox.Text == "");
+            if (!isFilled)
             {
-                MessageBox.Show("Заполните все поля");
+                var errorLabels = inputPanel.Controls.OfType<Label>();
+                var isEmrty = errorLabels.Any(label => label.Text != "");
+                if (!isEmrty)
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
             }
             else
             {
-                if(!(panel1.Controls.OfType<Label>().Any(label => label.Text == "")))
-                {
-                    MessageBox.Show("Исправьте поля");
-                }
-                
+                MessageBox.Show("fill all inputs");
             }
         }
 
@@ -70,9 +61,9 @@ namespace ContactsAppUI
             {
                 Contact.BirthDate = BirthdateTimePicker.Value;
             }
-            catch (ArgumentException evt)
+            catch (ArgumentException exception)
             {
-                BirthdateTimePickerLabel.Text = evt.Message;
+                BirthdateTimePickerLabel.Text = exception.Message;
             }
         }
 
@@ -83,9 +74,9 @@ namespace ContactsAppUI
             try {
                 Contact.Surname = SurnameTextBox.Text;
             }
-            catch (ArgumentException evt)
+            catch (ArgumentException exception)
             {
-                SurnameWarninglabel.Text = evt.Message;
+                SurnameWarninglabel.Text = exception.Message;
             }
         }
 
@@ -96,9 +87,9 @@ namespace ContactsAppUI
             {
                 Contact.Name = NametextBox.Text;
             }
-            catch(ArgumentException evt)
+            catch(ArgumentException exception)
             {
-                NameWarningLabel.Text = evt.Message;
+                NameWarningLabel.Text = exception.Message;
             }
         }
 
@@ -115,8 +106,8 @@ namespace ContactsAppUI
             PhoneMaskedTextBoxLabel.Text = "";
             if (PhoneTextBox.Text.Length != phoneLength)
             {
-                PhoneMaskedTextBoxLabel.Text = "Длина номера " + PhoneTextBox.Text.Length
-                    + "а должна быть "
+                PhoneMaskedTextBoxLabel.Text = "Length of number " + PhoneTextBox.Text.Length
+                    + "it must be "
                     + phoneLength;
             }
             else

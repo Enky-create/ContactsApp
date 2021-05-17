@@ -51,7 +51,7 @@ namespace ContactsApp
             {
                 if (!Char.IsDigit(forCheck[i]))
                 {
-                    throw new ArgumentException("В номере есть символы кроме цифр");
+                    throw new ArgumentException("The number contains symbols other than numbers");
                 }
             }
         }
@@ -67,7 +67,7 @@ namespace ContactsApp
 
                 if (string.Compare(RussianCountryCode, value) != 0)
                 {
-                    throw new ArgumentException("Код страны должен быть 7");
+                    throw new ArgumentException("Country code must be 7");
                 }
                 _countryCode = value;
             }
@@ -89,7 +89,8 @@ namespace ContactsApp
 
                 if (value.Length != CityCodeLength)
                 {
-                    throw new ArgumentException("Недостаточная длина кода города она должна равняться " + CityCodeLength);
+                    throw new ArgumentException("Insufficient length of the area code, it must be equal to " 
+                        + CityCodeLength);
                 }
                 _cityCode = value;
             }
@@ -111,7 +112,8 @@ namespace ContactsApp
 
                 if (value.Length != SubscriberCodeLength)
                 {
-                    throw new ArgumentException("Недостаточная длина номера абонента, длина должна быть " + SubscriberCodeLength);
+                    throw new ArgumentException("Insufficient length of the subscriber number, the length must be" 
+                        + SubscriberCodeLength);
                 }
                 _subscriberCode = value;
             }
