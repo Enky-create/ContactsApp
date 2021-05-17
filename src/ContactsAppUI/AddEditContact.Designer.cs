@@ -29,6 +29,7 @@ namespace ContactsAppUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditContact));
             this.inputPanel = new System.Windows.Forms.Panel();
             this.VkTextBoxLabel = new System.Windows.Forms.Label();
             this.EmailTextBoxLabel = new System.Windows.Forms.Label();
@@ -285,6 +286,7 @@ namespace ContactsAppUI
             this.Controls.Add(this.AddEditOkButton);
             this.Controls.Add(this.AddEditCancelButton);
             this.Controls.Add(this.inputPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddEditContact";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
