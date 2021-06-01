@@ -1,14 +1,7 @@
 ﻿using ContactsApp;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ContactsApp;
 
 namespace ContactsAppUI
 {
@@ -26,8 +19,7 @@ namespace ContactsAppUI
             SurnameTextBox.Text = Contact.Surname;
             NametextBox.Text = Contact.Name;
             BirthdateTimePicker.Value = Contact.BirthDate;
-            PhoneTextBox.Text = Contact.PhoneNumber.CountryCode + Contact.PhoneNumber.CityCode
-                + Contact.PhoneNumber.SubscriberCode;
+            PhoneTextBox.Text = Contact.GetNumber();
             EmailTextBox.Text = Contact.Email;
             VkTextBox.Text = Contact.IdVkontakte;
         }
@@ -71,7 +63,8 @@ namespace ContactsAppUI
         {
             SurnameWarninglabel.Text = "";
 
-            try {
+            try 
+            {
                 Contact.Surname = SurnameTextBox.Text;
             }
             catch (ArgumentException exception)
@@ -93,35 +86,34 @@ namespace ContactsAppUI
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        
-
         private void PhoneTextBox_TextChanged(object sender, EventArgs e)
         {
             var phoneLength = 11;
-            PhoneMaskedTextBoxLabel.Text = "";
-            if (PhoneTextBox.Text.Length != phoneLength)
+            var errorText = PhoneMaskedTextBoxLabel.Text;
+            var phoneText = PhoneTextBox.Text;
+            errorText = "";
+            if (phoneText.Length != phoneLength)
             {
-                PhoneMaskedTextBoxLabel.Text = "Length of number " + PhoneTextBox.Text.Length
-                    + "it must be "
-                    + phoneLength;
+                errorText =String.Join(
+                    " ", 
+                    "Length of number ",
+                    PhoneTextBox.Text.Length,
+                    "it must be ",
+                    phoneLength);
             }
             else
             {
                 try
                 {
-                    Contact.PhoneNumber.CountryCode = PhoneTextBox.Text.Substring(0, 1);
-                    Contact.PhoneNumber.CityCode = PhoneTextBox.Text.Substring(1, 3);
-                    Contact.PhoneNumber.SubscriberCode = PhoneTextBox.Text.Substring(4);
+                    var contactNumber = Contact.PhoneNumber;
+                    contactNumber.CountryCode = phoneText.Substring(0, 1);
+                    contactNumber.CityCode = phoneText.Substring(1, 3);
+                    contactNumber.SubscriberCode = phoneText.Substring(4);
 
                 }
-                catch (ArgumentException evt)
+                catch (ArgumentException exception)
                 {
-                    PhoneMaskedTextBoxLabel.Text = evt.Message;
+                    errorText = exception.Message;
                 }
             }
         }
@@ -133,9 +125,9 @@ namespace ContactsAppUI
             {
                 Contact.Email = EmailTextBox.Text;
             }
-            catch (ArgumentException evt)
+            catch (ArgumentException exception)
             {
-                EmailTextBoxLabel.Text = evt.Message;
+                EmailTextBoxLabel.Text = exception.Message;
             }
         }
 
@@ -146,9 +138,9 @@ namespace ContactsAppUI
             {
                 Contact.IdVkontakte = VkTextBox.Text;
             }
-            catch (ArgumentException evt)
+            catch (ArgumentException exception)
             {
-                VkTextBoxLabel.Text = evt.Message;
+                VkTextBoxLabel.Text = exception.Message;
             }
         }
 

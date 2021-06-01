@@ -76,7 +76,6 @@ namespace ContactsAppUI
             this.inputPanel.Name = "inputPanel";
             this.inputPanel.Size = new System.Drawing.Size(401, 312);
             this.inputPanel.TabIndex = 0;
-            this.inputPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // VkTextBoxLabel
             // 
@@ -288,6 +287,8 @@ namespace ContactsAppUI
             this.Controls.Add(this.inputPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(516, 425);
+            this.MinimumSize = new System.Drawing.Size(516, 425);
             this.Name = "AddEditContact";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Contact";
