@@ -18,7 +18,6 @@ namespace ContactsAppUI
             EmailtextBox.Text = "";
             VkBox.Text = "";
         }
-
         private void ShowContact(Contact contact)
         {
             SurnameTextBox.Text = contact.Surname;
@@ -28,7 +27,6 @@ namespace ContactsAppUI
             EmailtextBox.Text = contact.Email;
             VkBox.Text = contact.IdVkontakte;
         }
-
         private void CheckBirthday(List<Contact> contacts)
         {
             var birthDayContacts = new List<Contact>();
@@ -93,7 +91,6 @@ namespace ContactsAppUI
                 }
             }
         }
-
         private void AddContact()
         {
             var contacts = _project.Сontacts;
@@ -109,7 +106,6 @@ namespace ContactsAppUI
                 ShowContact(newContact);
             }
         }
-
         private void ClearAndFillList(List<Contact> Сontacts)
         {
             var selectedItem = ContactListBox.SelectedIndex;
@@ -117,13 +113,11 @@ namespace ContactsAppUI
             ContactListBox.Items.Clear();
             SurnameComparer comparor = new SurnameComparer();
             contacts.Sort(comparor);
-            ContactListBox.DataSource = Сontacts;
-            ContactListBox.DisplayMember = "Surname";
-
             for (int i = 0; i < contacts.Count; i++)
             {
-                ContactListBox.Items.Insert(i, contacts[i].Surname);
+                ContactListBox.Items.Insert(i, contacts[i]);
             }
+            ContactListBox.DisplayMember = "Surname";
             if (selectedItem != -1)
             {
                 selectedItem = 0;
@@ -150,11 +144,10 @@ namespace ContactsAppUI
         private void ContactListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedContact = ContactListBox.SelectedIndex;
-            var contacts = _project.Сontacts;
             if (selectedContact != -1)
             {
-               var contact = contacts[selectedContact];
-               ShowContact(contact);
+                var contact = (Contact)ContactListBox.SelectedItem;
+                ShowContact(contact);
             }
         }
 
@@ -197,9 +190,10 @@ namespace ContactsAppUI
                 if (surname.Contains(enteredText) || 
                     name.Contains(enteredText))
                 {
-                    ContactListBox.Items.Add(contacts[i].Surname);
+                    ContactListBox.Items.Add(contacts[i]);
                 }
             }
+            ContactListBox.DisplayMember = "Surname";
             if (selectedContact == -1)
             {
                 selectedContact = 0;
