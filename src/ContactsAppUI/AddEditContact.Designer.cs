@@ -74,14 +74,14 @@ namespace ContactsAppUI
             this.inputPanel.Location = new System.Drawing.Point(85, 11);
             this.inputPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.inputPanel.Name = "inputPanel";
-            this.inputPanel.Size = new System.Drawing.Size(401, 312);
+            this.inputPanel.Size = new System.Drawing.Size(401, 318);
             this.inputPanel.TabIndex = 0;
             // 
             // VkTextBoxLabel
             // 
             this.VkTextBoxLabel.AutoSize = true;
             this.VkTextBoxLabel.ForeColor = System.Drawing.Color.Maroon;
-            this.VkTextBoxLabel.Location = new System.Drawing.Point(2, 286);
+            this.VkTextBoxLabel.Location = new System.Drawing.Point(5, 288);
             this.VkTextBoxLabel.Name = "VkTextBoxLabel";
             this.VkTextBoxLabel.Size = new System.Drawing.Size(0, 17);
             this.VkTextBoxLabel.TabIndex = 21;
@@ -90,7 +90,7 @@ namespace ContactsAppUI
             // 
             this.EmailTextBoxLabel.AutoSize = true;
             this.EmailTextBoxLabel.ForeColor = System.Drawing.Color.Maroon;
-            this.EmailTextBoxLabel.Location = new System.Drawing.Point(2, 234);
+            this.EmailTextBoxLabel.Location = new System.Drawing.Point(5, 236);
             this.EmailTextBoxLabel.Name = "EmailTextBoxLabel";
             this.EmailTextBoxLabel.Size = new System.Drawing.Size(0, 17);
             this.EmailTextBoxLabel.TabIndex = 20;
@@ -219,7 +219,7 @@ namespace ContactsAppUI
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(9, 11);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(75, 312);
+            this.panel2.Size = new System.Drawing.Size(75, 318);
             this.panel2.TabIndex = 3;
             // 
             // label6

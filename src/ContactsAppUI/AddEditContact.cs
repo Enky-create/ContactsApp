@@ -89,12 +89,12 @@ namespace ContactsAppUI
         private void PhoneTextBox_TextChanged(object sender, EventArgs e)
         {
             var phoneLength = 11;
-            var errorText = PhoneMaskedTextBoxLabel.Text;
+            var errorLabel = PhoneMaskedTextBoxLabel;
             var phoneText = PhoneTextBox.Text;
-            errorText = "";
+            errorLabel.Text = "";
             if (phoneText.Length != phoneLength)
             {
-                errorText =String.Join(
+                errorLabel.Text =String.Join(
                     " ", 
                     "Length of number ",
                     PhoneTextBox.Text.Length,
@@ -113,7 +113,7 @@ namespace ContactsAppUI
                 }
                 catch (ArgumentException exception)
                 {
-                    errorText = exception.Message;
+                    errorLabel.Text = exception.Message;
                 }
             }
         }
