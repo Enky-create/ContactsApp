@@ -115,8 +115,9 @@ namespace ContactsAppUI
             contacts.Sort(comparor);
             for (int i = 0; i < contacts.Count; i++)
             {
-                ContactListBox.Items.Insert(i, contacts[i].Surname);
+                ContactListBox.Items.Insert(i, contacts[i]);
             }
+            ContactListBox.DisplayMember = "Surname";
             if (selectedItem != -1)
             {
                 selectedItem = 0;
@@ -145,7 +146,7 @@ namespace ContactsAppUI
             var selectedContact = ContactListBox.SelectedIndex;
             if (selectedContact != -1)
             {
-                var contact = _project.Сontacts[selectedContact];
+                var contact = (Contact)ContactListBox.SelectedItem;
                 ShowContact(contact);
             }
         }
@@ -189,9 +190,10 @@ namespace ContactsAppUI
                 if (surname.Contains(enteredText) || 
                     name.Contains(enteredText))
                 {
-                    ContactListBox.Items.Add(contacts[i].Surname);
+                    ContactListBox.Items.Add(contacts[i]);
                 }
             }
+            ContactListBox.DisplayMember = "Surname";
             if (selectedContact == -1)
             {
                 selectedContact = 0;
