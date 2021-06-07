@@ -43,8 +43,8 @@ namespace ContactsAppUI
             this.NametextBox = new System.Windows.Forms.TextBox();
             this.SurnameTextBox = new System.Windows.Forms.TextBox();
             this.BirthdateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.AddEditCancelButton = new System.Windows.Forms.Button();
-            this.AddEditOkButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.OkButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -147,7 +147,7 @@ namespace ContactsAppUI
             this.VkTextBox.Name = "VkTextBox";
             this.VkTextBox.Size = new System.Drawing.Size(385, 22);
             this.VkTextBox.TabIndex = 14;
-            this.VkTextBox.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.VkTextBox.TextChanged += new System.EventHandler(this.VkTextBox_TextChanged);
             // 
             // EmailTextBox
             // 
@@ -185,29 +185,29 @@ namespace ContactsAppUI
             this.BirthdateTimePicker.TabIndex = 4;
             this.BirthdateTimePicker.ValueChanged += new System.EventHandler(this.BirthdateTimePicker_ValueChanged);
             // 
-            // AddEditCancelButton
+            // CancelButton
             // 
-            this.AddEditCancelButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.AddEditCancelButton.Location = new System.Drawing.Point(376, 333);
-            this.AddEditCancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.AddEditCancelButton.Name = "AddEditCancelButton";
-            this.AddEditCancelButton.Size = new System.Drawing.Size(99, 34);
-            this.AddEditCancelButton.TabIndex = 1;
-            this.AddEditCancelButton.Text = "Cancel";
-            this.AddEditCancelButton.UseVisualStyleBackColor = true;
-            this.AddEditCancelButton.Click += new System.EventHandler(this.AddEditCancelButton_Click);
+            this.CancelButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CancelButton.Location = new System.Drawing.Point(376, 333);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(99, 34);
+            this.CancelButton.TabIndex = 1;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.AddEditCancelButton_Click);
             // 
-            // AddEditOkButton
+            // OkButton
             // 
-            this.AddEditOkButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.AddEditOkButton.Location = new System.Drawing.Point(265, 333);
-            this.AddEditOkButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.AddEditOkButton.Name = "AddEditOkButton";
-            this.AddEditOkButton.Size = new System.Drawing.Size(105, 34);
-            this.AddEditOkButton.TabIndex = 2;
-            this.AddEditOkButton.Text = "OK";
-            this.AddEditOkButton.UseVisualStyleBackColor = true;
-            this.AddEditOkButton.Click += new System.EventHandler(this.AddEditOkButton_Click);
+            this.OkButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.OkButton.Location = new System.Drawing.Point(265, 333);
+            this.OkButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(105, 34);
+            this.OkButton.TabIndex = 2;
+            this.OkButton.Text = "OK";
+            this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.AddEditOkButton_Click);
             // 
             // panel2
             // 
@@ -282,8 +282,8 @@ namespace ContactsAppUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 378);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.AddEditOkButton);
-            this.Controls.Add(this.AddEditCancelButton);
+            this.Controls.Add(this.OkButton);
+            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.inputPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -291,7 +291,7 @@ namespace ContactsAppUI
             this.MinimumSize = new System.Drawing.Size(516, 425);
             this.Name = "AddEditContact";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Contact";
+            this.Text = "Add/Edit Contact";
             this.Load += new System.EventHandler(this.AddEditContact_Load);
             this.inputPanel.ResumeLayout(false);
             this.inputPanel.PerformLayout();
@@ -305,8 +305,8 @@ namespace ContactsAppUI
 
         private System.Windows.Forms.Panel inputPanel;
         private System.Windows.Forms.DateTimePicker BirthdateTimePicker;
-        private System.Windows.Forms.Button AddEditCancelButton;
-        private System.Windows.Forms.Button AddEditOkButton;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.TextBox VkTextBox;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.TextBox NametextBox;

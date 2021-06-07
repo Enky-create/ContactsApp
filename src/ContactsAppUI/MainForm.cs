@@ -1,6 +1,7 @@
 ﻿using ContactsApp;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ContactsAppUI
@@ -8,70 +9,37 @@ namespace ContactsAppUI
     public partial class MainForm : Form
     {
         private  Project  _project = ProjectManager.Load(ProjectManager.Path);
-        
-        private void CleanTextboxes()
-        {
-            SurnameTextBox.Text = "";
-            NametextBox.Text = "";
-            BirthdaydateTimePicker.Value = DateTime.Now;
-            PhonetextBox.Text = "";
-            EmailtextBox.Text = "";
-            VkBox.Text = "";
-        }
-        private void ShowContact(Contact contact)
-        {
-            SurnameTextBox.Text = contact.Surname;
-            NametextBox.Text = contact.Name;
-            BirthdaydateTimePicker.Value = contact.BirthDate;
-            PhonetextBox.Text = contact.GetNumber();
-            EmailtextBox.Text = contact.Email;
-            VkBox.Text = contact.IdVkontakte;
-        }
-        private void CheckBirthday(List<Contact> contacts)
-        {
-            var birthDayContacts = new List<Contact>();
-            DateTime date = DateTime.Now.Date;
-            foreach (Contact contact in contacts)
-            {
-                if (contact.BirthDate.Date == date)
-                {
-                    birthDayContacts.Add(contact);
-                }
-            }
-            if (birthDayContacts.Count > 0)
-            {
-                Birthdaypanel.Visible = true;
-                BirthdayLabel.Text = "Today birthday ";
-                foreach (Contact contact in birthDayContacts)
-                {
-                    BirthdayLabel.Text = BirthdayLabel.Text + contact.Surname + " ";
-                }
-            }
-
-        }
+     
+        /// <summary>
+        /// Удаляет контакт
+        /// </summary>
         private void RemoveContact()
         {
             var selectedItem = ContactListBox.SelectedIndex;
             var contacts = _project.Сontacts;
             if (selectedItem == -1)
             {
-                MessageBox.Show("Chose contact");
+                MessageBox.Show("Choose contact");
             }
             else
             {
                 contacts.Remove(contacts[selectedItem]);
                 ProjectManager.Save(_project, ProjectManager.Path);
-                ClearAndFillList(contacts);
+                UpdateList(contacts);
                 CleanTextboxes();
             }
         }
+
+        /// <summary>
+        /// Редактирует контакт
+        /// </summary>
         private void EditContact()
         {
             var selectedItem = ContactListBox.SelectedIndex;
             var contacts = _project.Сontacts;
             if (selectedItem == -1)
             {
-                MessageBox.Show("Chose contact");
+                MessageBox.Show("Choose contact");
             }
             else
             {
@@ -85,12 +53,16 @@ namespace ContactsAppUI
                     _project.Сontacts.Remove(contacts[selectedItem]);
                     _project.Сontacts.Add(editedContact);
                     ProjectManager.Save(_project, ProjectManager.Path);
-                    ClearAndFillList(contacts);
+                    UpdateList(contacts);
                     CheckBirthday(contacts);
                     ShowContact(editedContact);
                 }
             }
         }
+
+        /// <summary>
+        /// Добавляет контакт
+        /// </summary>
         private void AddContact()
         {
             var contacts = _project.Сontacts;
@@ -101,12 +73,17 @@ namespace ContactsAppUI
             {
                 contacts.Add(newContact);
                 ProjectManager.Save(_project, ProjectManager.Path);
-                ClearAndFillList(contacts);
+                UpdateList(contacts);
                 CheckBirthday(contacts);
                 ShowContact(newContact);
             }
         }
-        private void ClearAndFillList(List<Contact> Сontacts)
+
+        /// <summary>
+        /// Обновляет список
+        /// </summary>
+        /// <param name="Сontacts"></param>
+        private void UpdateList(List<Contact> Сontacts)
         {
             var selectedItem = ContactListBox.SelectedIndex;
             var contacts = _project.Сontacts;
@@ -124,14 +101,81 @@ namespace ContactsAppUI
             }
 
         }
+        /// <summary>
+        /// Очищает все текстовые поля
+        /// </summary>
+        private void CleanTextboxes()
+        {
+            SurnameTextBox.Text = "";
+            NametextBox.Text = "";
+            BirthdaydateTimePicker.Value = DateTime.Now;
+            PhonetextBox.Text = "";
+            EmailtextBox.Text = "";
+            VkBox.Text = "";
+        }
+        /// <summary>
+        /// Показывает контакт на правой панели MainForm, а также отмечает его в списке контактов 
+        /// </summary>
+        /// <param name="contact"></param>
+        private void ShowContact(Contact contact)
+        {
+            SurnameTextBox.Text = contact.Surname;
+            NametextBox.Text = contact.Name;
+            BirthdaydateTimePicker.Value = contact.BirthDate;
+            PhonetextBox.Text = contact.GetNumber();
+            EmailtextBox.Text = contact.Email;
+            VkBox.Text = contact.IdVkontakte;
+            for (int i = 0; i < ContactListBox.Items.Count; i++)
+            {
+                if (ContactListBox.Items[i] == contact)
+                {
+                    ContactListBox.SelectedIndex = i;
+                }
+            }
+        }
 
+        /// <summary>
+        /// Проверяет и отрисовывает контакты у которых день рождения совпадает с Datetime.Now
+        /// </summary>
+        /// <param name="contacts"></param>
+        private void CheckBirthday(List<Contact> contacts)
+        {
+            var birthDayContacts = new List<Contact>();
+            var date = DateTime.Now.Date;
+            foreach (Contact contact in contacts)
+            {
+                var birthDate = contact.BirthDate.Date;
+                if (birthDate.Day == date.Day && birthDate.Month == date.Month)
+                {
+                    birthDayContacts.Add(contact);
+                }
+            }
+            if (birthDayContacts.Count > 0)
+            {
+                Birthdaypanel.Visible = true;
+                BirthdayLabel.Text = "Today birthday :";
+                var surnames = birthDayContacts.Select(contact => contact.Surname).ToList();
+                foreach (Contact contact in birthDayContacts)
+                {
+                    BirthdayLabel.Text = BirthdayLabel.Text + contact.Surname + " ";
+                }
+            }
+            else
+            {
+                Birthdaypanel.Visible = false;
+            }
+
+        }
+        /// <summary>
+        /// Инициализирует MainForm
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
             var contacts = _project.Сontacts;
             if (contacts.Count != 0)
             {
-                ClearAndFillList(contacts);
+                UpdateList(contacts);
                 CheckBirthday(contacts);
             }
         }
@@ -158,7 +202,9 @@ namespace ContactsAppUI
 
         private void RemoveContactButton_Click(object sender, EventArgs e)
         {
+            var contacts = _project.Сontacts;
             RemoveContact();
+            CheckBirthday(contacts);
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -198,6 +244,7 @@ namespace ContactsAppUI
             {
                 selectedContact = 0;
             }
+            CleanTextboxes();
         }
 
         private void AddContactToolStripMenuItem_Click(object sender, EventArgs e)
@@ -212,7 +259,9 @@ namespace ContactsAppUI
 
         private void RemoveContactToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var contacts = _project.Сontacts;
             RemoveContact();
+            CheckBirthday(contacts);
         }
     }
 }

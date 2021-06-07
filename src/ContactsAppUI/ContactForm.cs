@@ -13,7 +13,7 @@ namespace ContactsAppUI
         {
             InitializeComponent();
         }
-
+        
         private void AddEditContact_Load(object sender, EventArgs e)
         {
             SurnameTextBox.Text = Contact.Surname;
@@ -23,8 +23,6 @@ namespace ContactsAppUI
             EmailTextBox.Text = Contact.Email;
             VkTextBox.Text = Contact.IdVkontakte;
         }
-
-        
 
         private void AddEditOkButton_Click(object sender, EventArgs e)
         {
@@ -94,12 +92,9 @@ namespace ContactsAppUI
             errorLabel.Text = "";
             if (phoneText.Length != phoneLength)
             {
-                errorLabel.Text =String.Join(
-                    " ", 
-                    "Length of number ",
-                    PhoneTextBox.Text.Length,
-                    "it must be ",
-                    phoneLength);
+                errorLabel.Text = "Length of number " 
+                    +PhoneTextBox.Text.Length + " it must be "
+                    + phoneLength;
             }
             else
             {
@@ -147,6 +142,19 @@ namespace ContactsAppUI
         private void AddEditCancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void VkTextBox_TextChanged(object sender, EventArgs e)
+        {
+            VkTextBoxLabel.Text = "";
+            try
+            {
+                Contact.IdVkontakte = VkTextBox.Text;
+            }
+            catch (ArgumentException exception)
+            {
+                VkTextBoxLabel.Text = exception.Message;
+            }
         }
     }
 }
