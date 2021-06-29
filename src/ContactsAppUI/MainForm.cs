@@ -112,6 +112,7 @@ namespace ContactsAppUI
             PhonetextBox.Text = "";
             EmailtextBox.Text = "";
             VkBox.Text = "";
+            TypeComboBox.SelectedIndex = 0;
         }
         /// <summary>
         /// Показывает контакт на правой панели MainForm, а также отмечает его в списке контактов 
@@ -125,6 +126,7 @@ namespace ContactsAppUI
             PhonetextBox.Text = contact.GetNumber();
             EmailtextBox.Text = contact.Email;
             VkBox.Text = contact.IdVkontakte;
+            TypeComboBox.SelectedIndex = (int)contact.PhoneNumber.Type;
             for (int i = 0; i < ContactListBox.Items.Count; i++)
             {
                 if (ContactListBox.Items[i] == contact)
@@ -172,6 +174,7 @@ namespace ContactsAppUI
         public MainForm()
         {
             InitializeComponent();
+            TypeComboBox.SelectedIndex = 0;
             var contacts = _project.Сontacts;
             if (contacts.Count != 0)
             {

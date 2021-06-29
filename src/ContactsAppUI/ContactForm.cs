@@ -12,6 +12,7 @@ namespace ContactsAppUI
         public AddEditContact()
         {
             InitializeComponent();
+            TypeComboBox.SelectedIndex = 0;
         }
         
         private void AddEditContact_Load(object sender, EventArgs e)
@@ -155,6 +156,19 @@ namespace ContactsAppUI
             {
                 VkTextBoxLabel.Text = exception.Message;
             }
+        }
+
+        private void TypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Contact.PhoneNumber.Type = (PhoneType)TypeComboBox.SelectedIndex;
+            }
+            catch (ArgumentException exception)
+            {
+                PhoneMaskedTextBoxLabel.Text = exception.Message;
+            }
+            
         }
     }
 }

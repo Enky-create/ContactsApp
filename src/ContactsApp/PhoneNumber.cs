@@ -42,6 +42,11 @@ namespace ContactsApp
         private string _subscriberCode;
 
         /// <summary>
+        /// Перечисление с типами номеров
+        /// </summary>
+        private PhoneType _type = PhoneType.Mobile;
+
+        /// <summary>
         /// Метод проверяет наличие букв в номере
         /// </summary>
         /// <param name="forCheck"></param>
@@ -123,7 +128,24 @@ namespace ContactsApp
                 return this._subscriberCode;
             }
         }
-
+        public PhoneType Type
+        {
+            set
+            {
+                if(value is PhoneType)
+                {
+                    _type = value;
+                }
+                else
+                {
+                    throw new ArgumentException("the entered value is not included in the enumeration");
+                }
+            }
+            get
+            {
+                return _type;
+            }
+        }
         /// <summary>
         /// Конструктор принимает строки с кодом страны, города и абонента
         /// </summary>
@@ -136,7 +158,13 @@ namespace ContactsApp
             this.CityCode = cityCode;
             this.SubscriberCode = subscriberCode;
         }
-
+        public PhoneNumber(string countryCode, string cityCode, string subscriberCode, PhoneType type)
+        {
+            this.CountryCode = countryCode;
+            this.CityCode = cityCode;
+            this.SubscriberCode = subscriberCode;
+            this.Type = type;
+        }
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>

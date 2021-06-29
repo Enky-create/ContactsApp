@@ -52,6 +52,7 @@ namespace ContactsAppUI
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.TypeComboBox = new System.Windows.Forms.ComboBox();
             this.inputPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +60,7 @@ namespace ContactsAppUI
             // inputPanel
             // 
             this.inputPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.inputPanel.Controls.Add(this.TypeComboBox);
             this.inputPanel.Controls.Add(this.VkTextBoxLabel);
             this.inputPanel.Controls.Add(this.EmailTextBoxLabel);
             this.inputPanel.Controls.Add(this.PhoneTextBox);
@@ -276,6 +278,18 @@ namespace ContactsAppUI
             this.label1.TabIndex = 12;
             this.label1.Text = "Surname:";
             // 
+            // TypeComboBox
+            // 
+            this.TypeComboBox.FormattingEnabled = true;
+            this.TypeComboBox.Items.AddRange(new object[] {
+            "Mobile",
+            "Home"});
+            this.TypeComboBox.Location = new System.Drawing.Point(111, 157);
+            this.TypeComboBox.Name = "TypeComboBox";
+            this.TypeComboBox.Size = new System.Drawing.Size(135, 24);
+            this.TypeComboBox.TabIndex = 22;
+            this.TypeComboBox.SelectedIndexChanged += new System.EventHandler(this.TypeComboBox_SelectedIndexChanged);
+            // 
             // AddEditContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -325,5 +339,6 @@ namespace ContactsAppUI
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox TypeComboBox;
     }
 }
