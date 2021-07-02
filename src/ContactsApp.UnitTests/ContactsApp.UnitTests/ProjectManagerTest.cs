@@ -100,18 +100,6 @@ namespace ContactsApp.UnitTests
 
             //Assert
             Assert.AreEqual(expectedProject.Сontacts.Count, actualProject.Сontacts.Count);
-
-            /*Assert.Multiple(() =>
-            {
-                for (var i = 0; i < expectedProject.Сontacts.Count; i++)
-                {
-                    var expected = expectedProject.Сontacts[i];
-                    var actual = actualProject.Сontacts[i];
-
-                    Assert.AreEqual(expected, actual);
-                }
-            });*/
-
         }
 
         [Test(Description = "Тест десериализации поврежденного файла")]
