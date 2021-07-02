@@ -46,6 +46,8 @@ namespace ContactsAppUI
             this.ContactListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.FindTextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.TypeComboBox = new System.Windows.Forms.ComboBox();
             this.Birthdaypanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BirthdayLabel = new System.Windows.Forms.Label();
@@ -61,8 +63,6 @@ namespace ContactsAppUI
             this.BirthdaydateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.NametextBox = new System.Windows.Forms.TextBox();
             this.SurnameTextBox = new System.Windows.Forms.TextBox();
-            this.TypeComboBox = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -81,7 +81,7 @@ namespace ContactsAppUI
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1280, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1280, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -90,7 +90,7 @@ namespace ContactsAppUI
             this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ExitToolStripMenuItem});
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
-            this.FileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
             this.FileToolStripMenuItem.Text = "File";
             // 
             // ExitToolStripMenuItem
@@ -107,7 +107,7 @@ namespace ContactsAppUI
             this.EditContactToolStripMenuItem,
             this.RemoveContactToolStripMenuItem});
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(49, 26);
             this.EditToolStripMenuItem.Text = "Edit";
             // 
             // AddContactToolStripMenuItem
@@ -136,7 +136,7 @@ namespace ContactsAppUI
             this.HelpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AboutToolStripMenuItem});
             this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
-            this.HelpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.HelpToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
             this.HelpToolStripMenuItem.Text = "Help";
             // 
             // AboutToolStripMenuItem
@@ -151,7 +151,7 @@ namespace ContactsAppUI
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 28);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 30);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -181,7 +181,7 @@ namespace ContactsAppUI
             this.splitContainer1.Panel2.Controls.Add(this.BirthdaydateTimePicker);
             this.splitContainer1.Panel2.Controls.Add(this.NametextBox);
             this.splitContainer1.Panel2.Controls.Add(this.SurnameTextBox);
-            this.splitContainer1.Size = new System.Drawing.Size(1280, 644);
+            this.splitContainer1.Size = new System.Drawing.Size(1280, 642);
             this.splitContainer1.SplitterDistance = 280;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -192,7 +192,7 @@ namespace ContactsAppUI
             this.RemoveContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RemoveContactButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RemoveContactButton.ForeColor = System.Drawing.Color.Red;
-            this.RemoveContactButton.Location = new System.Drawing.Point(137, 588);
+            this.RemoveContactButton.Location = new System.Drawing.Point(137, 586);
             this.RemoveContactButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RemoveContactButton.Name = "RemoveContactButton";
             this.RemoveContactButton.Size = new System.Drawing.Size(59, 48);
@@ -207,7 +207,7 @@ namespace ContactsAppUI
             this.EditContactButton.FlatAppearance.BorderSize = 0;
             this.EditContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditContactButton.Image = ((System.Drawing.Image)(resources.GetObject("EditContactButton.Image")));
-            this.EditContactButton.Location = new System.Drawing.Point(75, 588);
+            this.EditContactButton.Location = new System.Drawing.Point(75, 586);
             this.EditContactButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.EditContactButton.Name = "EditContactButton";
             this.EditContactButton.Size = new System.Drawing.Size(57, 48);
@@ -223,7 +223,7 @@ namespace ContactsAppUI
             this.AddContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddContactButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddContactButton.ForeColor = System.Drawing.Color.Lime;
-            this.AddContactButton.Location = new System.Drawing.Point(15, 588);
+            this.AddContactButton.Location = new System.Drawing.Point(15, 586);
             this.AddContactButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddContactButton.Name = "AddContactButton";
             this.AddContactButton.Size = new System.Drawing.Size(53, 48);
@@ -242,7 +242,7 @@ namespace ContactsAppUI
             this.ContactListBox.Location = new System.Drawing.Point(15, 37);
             this.ContactListBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ContactListBox.Name = "ContactListBox";
-            this.ContactListBox.Size = new System.Drawing.Size(335, 528);
+            this.ContactListBox.Size = new System.Drawing.Size(335, 526);
             this.ContactListBox.TabIndex = 2;
             this.ContactListBox.SelectedIndexChanged += new System.EventHandler(this.ContactListBox_SelectedIndexChanged);
             // 
@@ -265,13 +265,34 @@ namespace ContactsAppUI
             this.FindTextBox.TabIndex = 0;
             this.FindTextBox.TextChanged += new System.EventHandler(this.FindTextBox_TextChanged);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(28, 184);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(40, 17);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Type";
+            // 
+            // TypeComboBox
+            // 
+            this.TypeComboBox.Enabled = false;
+            this.TypeComboBox.FormattingEnabled = true;
+            this.TypeComboBox.Items.AddRange(new object[] {
+            "Mobile",
+            "Home"});
+            this.TypeComboBox.Location = new System.Drawing.Point(91, 181);
+            this.TypeComboBox.Name = "TypeComboBox";
+            this.TypeComboBox.Size = new System.Drawing.Size(135, 24);
+            this.TypeComboBox.TabIndex = 13;
+            // 
             // Birthdaypanel
             // 
             this.Birthdaypanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Birthdaypanel.Controls.Add(this.panel1);
             this.Birthdaypanel.Controls.Add(this.BirthdayLabel);
             this.Birthdaypanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Birthdaypanel.Location = new System.Drawing.Point(0, 521);
+            this.Birthdaypanel.Location = new System.Drawing.Point(0, 519);
             this.Birthdaypanel.Margin = new System.Windows.Forms.Padding(4);
             this.Birthdaypanel.Name = "Birthdaypanel";
             this.Birthdaypanel.Size = new System.Drawing.Size(996, 123);
@@ -417,27 +438,6 @@ namespace ContactsAppUI
             this.SurnameTextBox.Name = "SurnameTextBox";
             this.SurnameTextBox.Size = new System.Drawing.Size(890, 22);
             this.SurnameTextBox.TabIndex = 0;
-            // 
-            // TypeComboBox
-            // 
-            this.TypeComboBox.Enabled = false;
-            this.TypeComboBox.FormattingEnabled = true;
-            this.TypeComboBox.Items.AddRange(new object[] {
-            "Mobile",
-            "Home"});
-            this.TypeComboBox.Location = new System.Drawing.Point(91, 181);
-            this.TypeComboBox.Name = "TypeComboBox";
-            this.TypeComboBox.Size = new System.Drawing.Size(135, 24);
-            this.TypeComboBox.TabIndex = 13;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(28, 184);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 17);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Type";
             // 
             // MainForm
             // 

@@ -123,9 +123,9 @@ namespace ContactsApp
                 }
                 if (value == "")
                 {
-                    throw new ArgumentException("Длина имени равна "
+                    throw new ArgumentException("Length of name "
                         + value.Length
-                        + " name must be greater than ");
+                        + " name must be greater");
                 }
                 this._name = value.Substring(0, 1).ToUpper() + value.Substring(1); 
             } 
@@ -207,14 +207,14 @@ namespace ContactsApp
         /// <param name="phoneNumber"></param>
         /// <param name="name"></param>
         /// <param name="surname"></param>
-        public Contact(PhoneNumber phoneNumber, string name, string surname)
+        /*public Contact(PhoneNumber phoneNumber, string name, string surname)
         {
             this.Name = name;
 
             this.Surname = surname;
 
             this.PhoneNumber = phoneNumber;
-        }
+        }*/
 
         /// <summary>
         /// Конструктор со всеми данными контакта

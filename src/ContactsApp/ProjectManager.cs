@@ -17,9 +17,9 @@ namespace ContactsApp
         /// </summary>
         public static string Path { get; set; } = 
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
-            @"\Komkov\ContactsApp\";
+            @"\Komkov\ContactsApp\Contacts.txt";
 
-        public static string FileName { get; set; } = @"Contacts.txt";
+        //public static string FileName { get; set; } = @"\Contacts.txt";
         /// <summary>
         /// статический метод сохраняет список контактов в файл
         /// </summary>
@@ -36,7 +36,7 @@ namespace ContactsApp
 
             JsonSerializer serializer = new JsonSerializer();
 
-            using (StreamWriter sw = new StreamWriter(directoryPath + FileName))
+            using (StreamWriter sw = new StreamWriter(filePath))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 serializer.Serialize(writer, data);
@@ -57,22 +57,28 @@ namespace ContactsApp
                 return new Project();
             }
 
-            if (!File.Exists(directoryPath + FileName))
+            if (!File.Exists(filePath))
             {
                 return new Project();
             }
-
 
             //Создаём переменную, в которую поместим результат десериализации
             Project project = new Project();
             //Создаём экземпляр сериализатора
             JsonSerializer serializer = new JsonSerializer();
             //Открываем поток для чтения из файла с указанием пути
-            using (StreamReader sr = new StreamReader(directoryPath + FileName))
-            using (JsonReader reader = new JsonTextReader(sr))
+            using (StreamReader sr = new StreamReader(filePath))
+            try
             {
-                //Вызываем десериализацию и явно преобразуем результат в целевой тип данных
-                project = (Project)serializer.Deserialize<Project>(reader);
+                using (JsonReader reader = new JsonTextReader(sr))
+                {
+                    //Вызываем десериализацию и явно преобразуем результат в целевой тип данных
+                    project = (Project)serializer.Deserialize<Project>(reader);
+                }
+            }
+            catch
+            {
+                    return new Project();
             }
             return project;
         }

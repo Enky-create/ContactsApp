@@ -29,17 +29,17 @@ namespace ContactsApp
         /// <summary>
         /// Строка хранящая код страны
         /// </summary>
-        private string _countryCode;
+        private string _countryCode = "7";
 
         /// <summary>
         /// Строка хранящая код города
         /// </summary>
-        private string _cityCode;
+        private string _cityCode = "999";
 
         /// <summary>
         /// Строка хранящая код абонента
         /// </summary>
-        private string _subscriberCode;
+        private string _subscriberCode= "1234567";
 
         /// <summary>
         /// Перечисление с типами номеров
