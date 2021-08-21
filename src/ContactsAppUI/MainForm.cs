@@ -43,14 +43,14 @@ namespace ContactsAppUI
             }
             else
             {
-                var selectedContact = contacts[selectedItem];
+                var selectedContact = (Contact)ContactListBox.SelectedItem;
                 var editedContact = (Contact)(selectedContact.Clone());
-                AddEditContact addEditContact = new AddEditContact();
-                addEditContact.Contact = editedContact;
-                DialogResult result = addEditContact.ShowDialog();
+                ContactForm сontactForm = new ContactForm();
+                сontactForm.Contact = editedContact;
+                DialogResult result = сontactForm.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    _project.Сontacts.Remove(contacts[selectedItem]);
+                    _project.Сontacts.Remove(selectedContact);
                     _project.Сontacts.Add(editedContact);
                     ProjectManager.Save(_project, ProjectManager.Path);
                     UpdateList(contacts);
@@ -67,7 +67,7 @@ namespace ContactsAppUI
         {
             var contacts = _project.Сontacts;
             var newContact = new Contact();
-            AddEditContact addEditContact = new AddEditContact { Contact = newContact };
+            ContactForm addEditContact = new ContactForm { Contact = newContact };
             DialogResult result = addEditContact.ShowDialog();
             if (result == DialogResult.OK)
             {

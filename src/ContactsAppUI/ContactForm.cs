@@ -5,17 +5,17 @@ using System.Windows.Forms;
 
 namespace ContactsAppUI
 {
-    public partial class AddEditContact : Form
+    public partial class ContactForm : Form
     {
         public Contact Contact { get; set; } = new Contact();
 
-        public AddEditContact()
+        public ContactForm()
         {
             InitializeComponent();
             TypeComboBox.SelectedIndex = 0;
         }
         
-        private void AddEditContact_Load(object sender, EventArgs e)
+        private void ContactForm_Load(object sender, EventArgs e)
         {
             SurnameTextBox.Text = Contact.Surname;
             NametextBox.Text = Contact.Name;
@@ -25,7 +25,7 @@ namespace ContactsAppUI
             VkTextBox.Text = Contact.IdVkontakte;
         }
 
-        private void AddEditOkButton_Click(object sender, EventArgs e)
+        private void OkButton_Click(object sender, EventArgs e)
         {
             var textboxList = inputPanel.Controls.OfType<TextBox>();
             var isFilled = textboxList.Any(textBox => textBox.Text == "");
@@ -127,20 +127,20 @@ namespace ContactsAppUI
             }
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-            VkTextBoxLabel.Text = "";
-            try
-            {
-                Contact.IdVkontakte = VkTextBox.Text;
-            }
-            catch (ArgumentException exception)
-            {
-                VkTextBoxLabel.Text = exception.Message;
-            }
-        }
+        //private void textBox4_TextChanged(object sender, EventArgs e)
+        //{
+        //    VkTextBoxLabel.Text = "";
+        //    try
+        //    {
+        //        Contact.IdVkontakte = VkTextBox.Text;
+        //    }
+        //    catch (ArgumentException exception)
+        //    {
+        //        VkTextBoxLabel.Text = exception.Message;
+        //    }
+        //}
 
-        private void AddEditCancelButton_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
