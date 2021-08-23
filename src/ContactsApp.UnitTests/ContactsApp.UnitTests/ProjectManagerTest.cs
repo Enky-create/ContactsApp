@@ -25,7 +25,7 @@ namespace ContactsApp.UnitTests
         /// <summary>
         /// Путь к правильному файлу
         /// </summary>
-        private readonly string _correctProjectFileName = PathDirectoryName + @"\TestData\correct.txt";
+        private readonly string _correctProjectFileName = PathDirectoryName +  @"\TestData\correct.txt";
 
         /// <summary>
         /// Путь к поврежденному файлу
@@ -35,12 +35,12 @@ namespace ContactsApp.UnitTests
         /// <summary>
         /// Путь к папке для сохранения файла
         /// </summary>
-        private static readonly string OutputFilePath = PathDirectoryName + @"\Output";
+        private static readonly string _outputFilePath = PathDirectoryName + @"\TestData";
 
         /// <summary>
         /// Путь для сохранения файла
         /// </summary>
-        private readonly string _outputProjectFileName = OutputFilePath + @"\Contacts.txt";
+        private readonly string _outputProjectFileName = _outputFilePath + @"\Contacts.txt";
 
         private Project GetCorrectProject()
         {
@@ -73,13 +73,13 @@ namespace ContactsApp.UnitTests
             //Setup
             var savingProject = GetCorrectProject();
 
-            if (File.Exists(OutputFilePath))
+            if (File.Exists(_outputFilePath))
             {
-                Directory.Delete(OutputFilePath, true);
+                Directory.Delete(_outputFilePath, true);
             }
 
             //Act
-            var path = OutputFilePath;
+            var path = _outputFilePath;
             ProjectManager.Save(savingProject, path + @"\Contacts.txt");
 
             //Assert

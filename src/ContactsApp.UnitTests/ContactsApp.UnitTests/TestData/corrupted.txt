@@ -1,0 +1,1 @@
+{"Сontacts":[{"BirthDate":"1900-06-29T00:00:00","IdVkontakte":"l","Name":"Akkk","Surname":"Kkk","Email":"l","PhoneNumber":{"CountryCode":"7","CityCode":"777","SubscriberCode":"7777777","Type":0}},{"BirthDate":"1998-10-23T00:00:00",пшпшпшпшппшшififijigjfifgfigigifirngrifbhfgbirfgnirbihg"IdVkontakte":"kkkkkkkkkkkkkkk","Name":"Yyyyyyyy"}]}
