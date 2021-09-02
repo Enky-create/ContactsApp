@@ -35,7 +35,7 @@ namespace ContactsApp.UnitTests
         /// <summary>
         /// Путь к папке для сохранения файла
         /// </summary>
-        private static readonly string _outputFilePath = PathDirectoryName + @"\TestData";
+        private static readonly string _outputFilePath = PathDirectoryName + @"\Output";
 
         /// <summary>
         /// Путь для сохранения файла
@@ -72,20 +72,18 @@ namespace ContactsApp.UnitTests
         {
             //Setup
             var savingProject = GetCorrectProject();
-
+            var path = _outputFilePath;
             if (File.Exists(_outputFilePath))
             {
                 Directory.Delete(_outputFilePath, true);
             }
 
             //Act
-            var path = _outputFilePath;
             ProjectManager.Save(savingProject, path + @"\Contacts.txt");
 
             //Assert
             var actual = File.ReadAllText(_outputProjectFileName);
             var expected = File.ReadAllText(_correctProjectFileName);
-
             Assert.AreEqual(expected, actual);
         }
 
@@ -100,6 +98,15 @@ namespace ContactsApp.UnitTests
 
             //Assert
             Assert.AreEqual(expectedProject.Сontacts.Count, actualProject.Сontacts.Count);
+            Assert.Multiple(() =>
+            {
+                for(var i=0; i < expectedProject.Сontacts.Count; i++)
+                {
+                    var expected = expectedProject.Сontacts[i];
+                    var actual = actualProject.Сontacts[i];
+                    Assert.AreEqual(expected, actual);
+                }
+            });
         }
 
         [Test(Description = "Тест десериализации поврежденного файла")]

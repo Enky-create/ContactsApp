@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContactsApp
 {
-    public class Contact: ICloneable
+    public class Contact: ICloneable, IEquatable<Contact>
     {
         /// <summary>
         /// Константа хранит длину для строк с именем, фамилией и почтой
@@ -245,5 +245,40 @@ namespace ContactsApp
 
         }
 
+        public bool Equals(Contact other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return _name == other._name && 
+                   _surname == other._surname && 
+                   _email == other._email && 
+                   Equals(_phoneNumber, other._phoneNumber) && 
+                   _idVkontakte == other._idVkontakte && 
+                   _birthDate.Equals(other._birthDate)&& 
+                   Equals(PhoneNumber, other.PhoneNumber);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Contact)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (_name != null ? _name.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (_surname != null ? _surname.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (_email != null ? _email.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (_phoneNumber != null ? _phoneNumber.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (_idVkontakte != null ? _idVkontakte.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ _birthDate.GetHashCode();
+                hashCode = (hashCode * 397) ^ (PhoneNumber != null ? PhoneNumber.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
     }
 }
